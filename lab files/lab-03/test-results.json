@@ -1,0 +1,926 @@
+[
+  {
+    "id": "S-01",
+    "name": "GET /books (retrieve all books with defaults)",
+    "method": "GET",
+    "endpoint": "/books",
+    "body": null,
+    "expectedStatus": 200,
+    "actualStatus": 200,
+    "bodyObserved": {
+      "message": "Books retrieved successfully",
+      "count": 9,
+      "data": [
+        {
+          "id": 1,
+          "title": "The Alchemist",
+          "author": "Paulo Coelho",
+          "price": 350,
+          "pages": 208
+        },
+        {
+          "id": 2,
+          "title": "Atomic Habits",
+          "author": "James Clear",
+          "price": 550,
+          "pages": 320
+        },
+        {
+          "id": 3,
+          "title": "Clean Code",
+          "author": "Robert C. Martin",
+          "price": 650,
+          "pages": 464
+        },
+        {
+          "id": 4,
+          "title": "To Kill a Mockingbird",
+          "author": "Harper Lee",
+          "price": 399,
+          "pages": 281
+        },
+        {
+          "id": 5,
+          "title": "1984",
+          "author": "George Orwell",
+          "price": 299,
+          "pages": 328
+        },
+        {
+          "id": 6,
+          "title": "The Great Gatsby",
+          "author": "F. Scott Fitzgerald",
+          "price": 250,
+          "pages": 180
+        },
+        {
+          "id": 7,
+          "title": "Rich Dad Poor Dad",
+          "author": "Robert T. Kiyosaki",
+          "price": 450,
+          "pages": 336
+        },
+        {
+          "id": 8,
+          "title": "Sapiens",
+          "author": "Yuval Noah Harari",
+          "price": 499,
+          "pages": 498
+        },
+        {
+          "id": 9,
+          "title": "Thinking, Fast and Slow",
+          "author": "Daniel Kahneman",
+          "price": 599,
+          "pages": 512
+        }
+      ]
+    },
+    "pass": true
+  },
+  {
+    "id": "S-02",
+    "name": "GET /books?search_q=Code (partial title search)",
+    "method": "GET",
+    "endpoint": "/books?search_q=Code",
+    "body": null,
+    "expectedStatus": 200,
+    "actualStatus": 200,
+    "bodyObserved": {
+      "message": "Books retrieved successfully",
+      "count": 1,
+      "data": [
+        {
+          "id": 3,
+          "title": "Clean Code",
+          "author": "Robert C. Martin",
+          "price": 650,
+          "pages": 464
+        }
+      ]
+    },
+    "pass": true
+  },
+  {
+    "id": "S-03",
+    "name": "GET /books?order_by=price&order=ASC (ascending sort)",
+    "method": "GET",
+    "endpoint": "/books?order_by=price&order=ASC",
+    "body": null,
+    "expectedStatus": 200,
+    "actualStatus": 200,
+    "bodyObserved": {
+      "message": "Books retrieved successfully",
+      "count": 9,
+      "data": [
+        {
+          "id": 6,
+          "title": "The Great Gatsby",
+          "author": "F. Scott Fitzgerald",
+          "price": 250,
+          "pages": 180
+        },
+        {
+          "id": 5,
+          "title": "1984",
+          "author": "George Orwell",
+          "price": 299,
+          "pages": 328
+        },
+        {
+          "id": 1,
+          "title": "The Alchemist",
+          "author": "Paulo Coelho",
+          "price": 350,
+          "pages": 208
+        },
+        {
+          "id": 4,
+          "title": "To Kill a Mockingbird",
+          "author": "Harper Lee",
+          "price": 399,
+          "pages": 281
+        },
+        {
+          "id": 7,
+          "title": "Rich Dad Poor Dad",
+          "author": "Robert T. Kiyosaki",
+          "price": 450,
+          "pages": 336
+        },
+        {
+          "id": 8,
+          "title": "Sapiens",
+          "author": "Yuval Noah Harari",
+          "price": 499,
+          "pages": 498
+        },
+        {
+          "id": 2,
+          "title": "Atomic Habits",
+          "author": "James Clear",
+          "price": 550,
+          "pages": 320
+        },
+        {
+          "id": 9,
+          "title": "Thinking, Fast and Slow",
+          "author": "Daniel Kahneman",
+          "price": 599,
+          "pages": 512
+        },
+        {
+          "id": 3,
+          "title": "Clean Code",
+          "author": "Robert C. Martin",
+          "price": 650,
+          "pages": 464
+        }
+      ]
+    },
+    "pass": true
+  },
+  {
+    "id": "S-04",
+    "name": "GET /books?order_by=price&order=DESC (descending sort)",
+    "method": "GET",
+    "endpoint": "/books?order_by=price&order=DESC",
+    "body": null,
+    "expectedStatus": 200,
+    "actualStatus": 200,
+    "bodyObserved": {
+      "message": "Books retrieved successfully",
+      "count": 9,
+      "data": [
+        {
+          "id": 3,
+          "title": "Clean Code",
+          "author": "Robert C. Martin",
+          "price": 650,
+          "pages": 464
+        },
+        {
+          "id": 9,
+          "title": "Thinking, Fast and Slow",
+          "author": "Daniel Kahneman",
+          "price": 599,
+          "pages": 512
+        },
+        {
+          "id": 2,
+          "title": "Atomic Habits",
+          "author": "James Clear",
+          "price": 550,
+          "pages": 320
+        },
+        {
+          "id": 8,
+          "title": "Sapiens",
+          "author": "Yuval Noah Harari",
+          "price": 499,
+          "pages": 498
+        },
+        {
+          "id": 7,
+          "title": "Rich Dad Poor Dad",
+          "author": "Robert T. Kiyosaki",
+          "price": 450,
+          "pages": 336
+        },
+        {
+          "id": 4,
+          "title": "To Kill a Mockingbird",
+          "author": "Harper Lee",
+          "price": 399,
+          "pages": 281
+        },
+        {
+          "id": 1,
+          "title": "The Alchemist",
+          "author": "Paulo Coelho",
+          "price": 350,
+          "pages": 208
+        },
+        {
+          "id": 5,
+          "title": "1984",
+          "author": "George Orwell",
+          "price": 299,
+          "pages": 328
+        },
+        {
+          "id": 6,
+          "title": "The Great Gatsby",
+          "author": "F. Scott Fitzgerald",
+          "price": 250,
+          "pages": 180
+        }
+      ]
+    },
+    "pass": true
+  },
+  {
+    "id": "S-05",
+    "name": "GET /books?limit=2&offset=2 (pagination)",
+    "method": "GET",
+    "endpoint": "/books?limit=2&offset=2",
+    "body": null,
+    "expectedStatus": 200,
+    "actualStatus": 200,
+    "bodyObserved": {
+      "message": "Books retrieved successfully",
+      "count": 2,
+      "data": [
+        {
+          "id": 3,
+          "title": "Clean Code",
+          "author": "Robert C. Martin",
+          "price": 650,
+          "pages": 464
+        },
+        {
+          "id": 4,
+          "title": "To Kill a Mockingbird",
+          "author": "Harper Lee",
+          "price": 399,
+          "pages": 281
+        }
+      ]
+    },
+    "pass": true
+  },
+  {
+    "id": "S-06",
+    "name": "GET /books?min_price=450 (minimum price filter)",
+    "method": "GET",
+    "endpoint": "/books?min_price=450",
+    "body": null,
+    "expectedStatus": 200,
+    "actualStatus": 200,
+    "bodyObserved": {
+      "message": "Books retrieved successfully",
+      "count": 5,
+      "data": [
+        {
+          "id": 2,
+          "title": "Atomic Habits",
+          "author": "James Clear",
+          "price": 550,
+          "pages": 320
+        },
+        {
+          "id": 3,
+          "title": "Clean Code",
+          "author": "Robert C. Martin",
+          "price": 650,
+          "pages": 464
+        },
+        {
+          "id": 7,
+          "title": "Rich Dad Poor Dad",
+          "author": "Robert T. Kiyosaki",
+          "price": 450,
+          "pages": 336
+        },
+        {
+          "id": 8,
+          "title": "Sapiens",
+          "author": "Yuval Noah Harari",
+          "price": 499,
+          "pages": 498
+        },
+        {
+          "id": 9,
+          "title": "Thinking, Fast and Slow",
+          "author": "Daniel Kahneman",
+          "price": 599,
+          "pages": 512
+        }
+      ]
+    },
+    "pass": true
+  },
+  {
+    "id": "S-07",
+    "name": "GET /books?max_price=350 (maximum price filter)",
+    "method": "GET",
+    "endpoint": "/books?max_price=350",
+    "body": null,
+    "expectedStatus": 200,
+    "actualStatus": 200,
+    "bodyObserved": {
+      "message": "Books retrieved successfully",
+      "count": 3,
+      "data": [
+        {
+          "id": 1,
+          "title": "The Alchemist",
+          "author": "Paulo Coelho",
+          "price": 350,
+          "pages": 208
+        },
+        {
+          "id": 5,
+          "title": "1984",
+          "author": "George Orwell",
+          "price": 299,
+          "pages": 328
+        },
+        {
+          "id": 6,
+          "title": "The Great Gatsby",
+          "author": "F. Scott Fitzgerald",
+          "price": 250,
+          "pages": 180
+        }
+      ]
+    },
+    "pass": true
+  },
+  {
+    "id": "S-08",
+    "name": "GET /books?min_price=300&max_price=500 (price range BETWEEN)",
+    "method": "GET",
+    "endpoint": "/books?min_price=300&max_price=500",
+    "body": null,
+    "expectedStatus": 200,
+    "actualStatus": 200,
+    "bodyObserved": {
+      "message": "Books retrieved successfully",
+      "count": 4,
+      "data": [
+        {
+          "id": 1,
+          "title": "The Alchemist",
+          "author": "Paulo Coelho",
+          "price": 350,
+          "pages": 208
+        },
+        {
+          "id": 4,
+          "title": "To Kill a Mockingbird",
+          "author": "Harper Lee",
+          "price": 399,
+          "pages": 281
+        },
+        {
+          "id": 7,
+          "title": "Rich Dad Poor Dad",
+          "author": "Robert T. Kiyosaki",
+          "price": 450,
+          "pages": 336
+        },
+        {
+          "id": 8,
+          "title": "Sapiens",
+          "author": "Yuval Noah Harari",
+          "price": 499,
+          "pages": 498
+        }
+      ]
+    },
+    "pass": true
+  },
+  {
+    "id": "S-09",
+    "name": "GET /books combined filters (search + price + sort + limit + offset)",
+    "method": "GET",
+    "endpoint": "/books?search_q=a&min_price=200&max_price=600&order_by=price&order=DESC&limit=3&offset=0",
+    "body": null,
+    "expectedStatus": 200,
+    "actualStatus": 200,
+    "bodyObserved": {
+      "message": "Books retrieved successfully",
+      "count": 3,
+      "data": [
+        {
+          "id": 9,
+          "title": "Thinking, Fast and Slow",
+          "author": "Daniel Kahneman",
+          "price": 599,
+          "pages": 512
+        },
+        {
+          "id": 2,
+          "title": "Atomic Habits",
+          "author": "James Clear",
+          "price": 550,
+          "pages": 320
+        },
+        {
+          "id": 8,
+          "title": "Sapiens",
+          "author": "Yuval Noah Harari",
+          "price": 499,
+          "pages": 498
+        }
+      ]
+    },
+    "pass": true
+  },
+  {
+    "id": "S-10",
+    "name": "GET /books/:id (existing book)",
+    "method": "GET",
+    "endpoint": "/books/1",
+    "body": null,
+    "expectedStatus": 200,
+    "actualStatus": 200,
+    "bodyObserved": {
+      "message": "Book retrieved successfully",
+      "data": {
+        "id": 1,
+        "title": "The Alchemist",
+        "author": "Paulo Coelho",
+        "price": 350,
+        "pages": 208
+      }
+    },
+    "pass": true
+  },
+  {
+    "id": "S-11",
+    "name": "POST /books (valid create)",
+    "method": "POST",
+    "endpoint": "/books",
+    "body": {
+      "title": "Pragmatic Programmer",
+      "author": "David Thomas",
+      "price": 620,
+      "pages": 352
+    },
+    "expectedStatus": 201,
+    "actualStatus": 201,
+    "bodyObserved": {
+      "message": "Book created successfully",
+      "data": {
+        "id": 10,
+        "title": "Pragmatic Programmer",
+        "author": "David Thomas",
+        "price": 620,
+        "pages": 352
+      }
+    },
+    "pass": true
+  },
+  {
+    "id": "S-12",
+    "name": "PUT /books/:id (valid update)",
+    "method": "PUT",
+    "endpoint": "/books/10",
+    "body": {
+      "title": "Pragmatic Programmer (20th Anniversary Edition)",
+      "author": "David Thomas & Andrew Hunt",
+      "price": 680,
+      "pages": 360
+    },
+    "expectedStatus": 200,
+    "actualStatus": 200,
+    "bodyObserved": {
+      "message": "Book updated successfully",
+      "data": {
+        "id": 10,
+        "title": "Pragmatic Programmer (20th Anniversary Edition)",
+        "author": "David Thomas & Andrew Hunt",
+        "price": 680,
+        "pages": 360
+      }
+    },
+    "pass": true
+  },
+  {
+    "id": "S-13",
+    "name": "DELETE /books/:id (delete existing)",
+    "method": "DELETE",
+    "endpoint": "/books/10",
+    "body": null,
+    "expectedStatus": 200,
+    "actualStatus": 200,
+    "bodyObserved": {
+      "message": "Book deleted successfully"
+    },
+    "pass": true
+  },
+  {
+    "id": "S-14",
+    "name": "GET /books/ (trailing slash)",
+    "method": "GET",
+    "endpoint": "/books/",
+    "body": null,
+    "expectedStatus": 200,
+    "actualStatus": 200,
+    "bodyObserved": {
+      "message": "Books retrieved successfully",
+      "count": 9,
+      "data": [
+        {
+          "id": 1,
+          "title": "The Alchemist",
+          "author": "Paulo Coelho",
+          "price": 350,
+          "pages": 208
+        },
+        {
+          "id": 2,
+          "title": "Atomic Habits",
+          "author": "James Clear",
+          "price": 550,
+          "pages": 320
+        },
+        {
+          "id": 3,
+          "title": "Clean Code",
+          "author": "Robert C. Martin",
+          "price": 650,
+          "pages": 464
+        },
+        {
+          "id": 4,
+          "title": "To Kill a Mockingbird",
+          "author": "Harper Lee",
+          "price": 399,
+          "pages": 281
+        },
+        {
+          "id": 5,
+          "title": "1984",
+          "author": "George Orwell",
+          "price": 299,
+          "pages": 328
+        },
+        {
+          "id": 6,
+          "title": "The Great Gatsby",
+          "author": "F. Scott Fitzgerald",
+          "price": 250,
+          "pages": 180
+        },
+        {
+          "id": 7,
+          "title": "Rich Dad Poor Dad",
+          "author": "Robert T. Kiyosaki",
+          "price": 450,
+          "pages": 336
+        },
+        {
+          "id": 8,
+          "title": "Sapiens",
+          "author": "Yuval Noah Harari",
+          "price": 499,
+          "pages": 498
+        },
+        {
+          "id": 9,
+          "title": "Thinking, Fast and Slow",
+          "author": "Daniel Kahneman",
+          "price": 599,
+          "pages": 512
+        }
+      ]
+    },
+    "pass": true
+  },
+  {
+    "id": "S-15",
+    "name": "GET /books?search_q=NonExistentMatch12345 (empty result 200)",
+    "method": "GET",
+    "endpoint": "/books?search_q=NonExistentMatch12345",
+    "body": null,
+    "expectedStatus": 200,
+    "actualStatus": 200,
+    "bodyObserved": {
+      "message": "Books retrieved successfully",
+      "count": 0,
+      "data": []
+    },
+    "pass": true
+  },
+  {
+    "id": "F-01",
+    "name": "POST /books (missing title)",
+    "method": "POST",
+    "endpoint": "/books",
+    "body": {
+      "author": "No Title Author",
+      "price": 300,
+      "pages": 100
+    },
+    "expectedStatus": 400,
+    "actualStatus": 400,
+    "bodyObserved": {
+      "message": "title is required and must be a non-empty string"
+    },
+    "pass": true
+  },
+  {
+    "id": "F-02",
+    "name": "POST /books (missing author)",
+    "method": "POST",
+    "endpoint": "/books",
+    "body": {
+      "title": "No Author Title",
+      "price": 300,
+      "pages": 100
+    },
+    "expectedStatus": 400,
+    "actualStatus": 400,
+    "bodyObserved": {
+      "message": "author is required and must be a non-empty string"
+    },
+    "pass": true
+  },
+  {
+    "id": "F-03",
+    "name": "POST /books (non-numeric price 'abc')",
+    "method": "POST",
+    "endpoint": "/books",
+    "body": {
+      "title": "Bad Price Book",
+      "author": "Author",
+      "price": "abc",
+      "pages": 100
+    },
+    "expectedStatus": 400,
+    "actualStatus": 400,
+    "bodyObserved": {
+      "message": "price is required and must be a valid number"
+    },
+    "pass": true
+  },
+  {
+    "id": "F-04",
+    "name": "POST /books (negative price -50)",
+    "method": "POST",
+    "endpoint": "/books",
+    "body": {
+      "title": "Negative Price Book",
+      "author": "Author",
+      "price": -50,
+      "pages": 100
+    },
+    "expectedStatus": 400,
+    "actualStatus": 400,
+    "bodyObserved": {
+      "message": "price must be a non-negative number"
+    },
+    "pass": true
+  },
+  {
+    "id": "F-05",
+    "name": "POST /books (malformed JSON payload)",
+    "method": "POST",
+    "endpoint": "/books",
+    "body": "{\"title\": \"Broken JSON\", \"price\": }",
+    "expectedStatus": 400,
+    "actualStatus": 400,
+    "bodyObserved": {
+      "message": "Malformed JSON in request body"
+    },
+    "pass": true
+  },
+  {
+    "id": "F-06",
+    "name": "GET /books/abc (invalid id format)",
+    "method": "GET",
+    "endpoint": "/books/abc",
+    "body": null,
+    "expectedStatus": 400,
+    "actualStatus": 400,
+    "bodyObserved": {
+      "message": "id must be a positive integer"
+    },
+    "pass": true
+  },
+  {
+    "id": "F-07",
+    "name": "GET /books/999999 (nonexistent id)",
+    "method": "GET",
+    "endpoint": "/books/999999",
+    "body": null,
+    "expectedStatus": 404,
+    "actualStatus": 404,
+    "bodyObserved": {
+      "message": "Book not found"
+    },
+    "pass": true
+  },
+  {
+    "id": "F-08",
+    "name": "PUT /books/999999 (nonexistent id with valid body)",
+    "method": "PUT",
+    "endpoint": "/books/999999",
+    "body": {
+      "title": "Valid Title",
+      "author": "Valid Author",
+      "price": 300,
+      "pages": 100
+    },
+    "expectedStatus": 404,
+    "actualStatus": 404,
+    "bodyObserved": {
+      "message": "Book not found"
+    },
+    "pass": true
+  },
+  {
+    "id": "F-09",
+    "name": "PUT /books/1 (invalid body missing author)",
+    "method": "PUT",
+    "endpoint": "/books/1",
+    "body": {
+      "title": "Valid Title",
+      "price": 300
+    },
+    "expectedStatus": 400,
+    "actualStatus": 400,
+    "bodyObserved": {
+      "message": "author is required and must be a non-empty string"
+    },
+    "pass": true
+  },
+  {
+    "id": "F-10",
+    "name": "DELETE /books/999999 (nonexistent id)",
+    "method": "DELETE",
+    "endpoint": "/books/999999",
+    "body": null,
+    "expectedStatus": 404,
+    "actualStatus": 404,
+    "bodyObserved": {
+      "message": "Book not found"
+    },
+    "pass": true
+  },
+  {
+    "id": "F-11",
+    "name": "DELETE /books/abc (invalid id format)",
+    "method": "DELETE",
+    "endpoint": "/books/abc",
+    "body": null,
+    "expectedStatus": 400,
+    "actualStatus": 400,
+    "bodyObserved": {
+      "message": "id must be a positive integer"
+    },
+    "pass": true
+  },
+  {
+    "id": "F-12",
+    "name": "GET /books?order=SIDEWAYS (invalid order direction)",
+    "method": "GET",
+    "endpoint": "/books?order=SIDEWAYS",
+    "body": null,
+    "expectedStatus": 400,
+    "actualStatus": 400,
+    "bodyObserved": {
+      "message": "Invalid order value 'SIDEWAYS'. Allowed values: ASC, DESC"
+    },
+    "pass": true
+  },
+  {
+    "id": "F-13",
+    "name": "GET /books?order_by=password;DROP TABLE books (SQL injection / column whitelist rejection)",
+    "method": "GET",
+    "endpoint": "/books?order_by=password;DROP TABLE books",
+    "body": null,
+    "expectedStatus": 400,
+    "actualStatus": 400,
+    "bodyObserved": {
+      "message": "Invalid order_by column 'password;DROP TABLE books'. Allowed columns: id, title, author, price, pages"
+    },
+    "pass": true
+  },
+  {
+    "id": "F-14",
+    "name": "GET /books?limit=abc, 0, -5, 150 (invalid limit values rejected)",
+    "method": "GET",
+    "endpoint": "/books?limit=abc (also 0, -5, 150)",
+    "body": null,
+    "expectedStatus": 400,
+    "actualStatus": 400,
+    "bodyObserved": {
+      "message": "limit cannot exceed 100"
+    },
+    "pass": true
+  },
+  {
+    "id": "F-15",
+    "name": "GET /books?offset=-1, abc (invalid offset rejected)",
+    "method": "GET",
+    "endpoint": "/books?offset=-1 (also abc)",
+    "body": null,
+    "expectedStatus": 400,
+    "actualStatus": 400,
+    "bodyObserved": {
+      "message": "offset must be a non-negative integer"
+    },
+    "pass": true
+  },
+  {
+    "id": "F-16",
+    "name": "GET /books?min_price=abc (non-numeric min_price)",
+    "method": "GET",
+    "endpoint": "/books?min_price=abc",
+    "body": null,
+    "expectedStatus": 400,
+    "actualStatus": 400,
+    "bodyObserved": {
+      "message": "min_price must be a valid number"
+    },
+    "pass": true
+  },
+  {
+    "id": "F-17",
+    "name": "GET /books?min_price=500&max_price=100 (min_price > max_price inverted range)",
+    "method": "GET",
+    "endpoint": "/books?min_price=500&max_price=100",
+    "body": null,
+    "expectedStatus": 400,
+    "actualStatus": 400,
+    "bodyObserved": {
+      "message": "min_price cannot be greater than max_price"
+    },
+    "pass": true
+  },
+  {
+    "id": "F-18",
+    "name": "GET /unknown-route (404 unknown route)",
+    "method": "GET",
+    "endpoint": "/unknown-route",
+    "body": null,
+    "expectedStatus": 404,
+    "actualStatus": 404,
+    "bodyObserved": {
+      "message": "Route not found"
+    },
+    "pass": true
+  },
+  {
+    "id": "F-19",
+    "name": "GET /books?search_q=' OR '1'='1 (SQL injection neutralized via parameter binding)",
+    "method": "GET",
+    "endpoint": "/books?search_q=' OR '1'='1",
+    "body": null,
+    "expectedStatus": 200,
+    "actualStatus": 200,
+    "bodyObserved": {
+      "message": "Books retrieved successfully",
+      "count": 0,
+      "data": []
+    },
+    "pass": true
+  },
+  {
+    "id": "F-20",
+    "name": "500 Internal Server Error (global error handler verification)",
+    "method": "ALL",
+    "endpoint": "N/A",
+    "body": null,
+    "expectedStatus": 500,
+    "actualStatus": 500,
+    "bodyObserved": {
+      "message": "Internal server error"
+    },
+    "pass": true
+  }
+]

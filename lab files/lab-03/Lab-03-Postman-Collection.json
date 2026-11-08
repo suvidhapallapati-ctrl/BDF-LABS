@@ -1,0 +1,314 @@
+{
+  "info": {
+    "_postman_id": "lab-03-rest-api-collection",
+    "name": "Lab 03 - REST API & Query Parameters",
+    "description": "Complete verified Postman collection for Lab 3 covering all success (S-01 to S-15) and failure (F-01 to F-19) test cases.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "BASE_URL",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Success Cases",
+      "item": [
+        {
+          "name": "S-01 GET All Books (Defaults)",
+          "request": {
+            "method": "GET",
+            "url": "{{BASE_URL}}/books"
+          }
+        },
+        {
+          "name": "S-02 GET Books Search by Title",
+          "request": {
+            "method": "GET",
+            "url": "{{BASE_URL}}/books?search_q=Code"
+          }
+        },
+        {
+          "name": "S-03 GET Books Sort Price ASC",
+          "request": {
+            "method": "GET",
+            "url": "{{BASE_URL}}/books?order_by=price&order=ASC"
+          }
+        },
+        {
+          "name": "S-04 GET Books Sort Price DESC",
+          "request": {
+            "method": "GET",
+            "url": "{{BASE_URL}}/books?order_by=price&order=DESC"
+          }
+        },
+        {
+          "name": "S-05 GET Books Pagination (limit=2, offset=2)",
+          "request": {
+            "method": "GET",
+            "url": "{{BASE_URL}}/books?limit=2&offset=2"
+          }
+        },
+        {
+          "name": "S-06 GET Books Min Price (min_price=450)",
+          "request": {
+            "method": "GET",
+            "url": "{{BASE_URL}}/books?min_price=450"
+          }
+        },
+        {
+          "name": "S-07 GET Books Max Price (max_price=350)",
+          "request": {
+            "method": "GET",
+            "url": "{{BASE_URL}}/books?max_price=350"
+          }
+        },
+        {
+          "name": "S-08 GET Books Price Range (min_price=300&max_price=500)",
+          "request": {
+            "method": "GET",
+            "url": "{{BASE_URL}}/books?min_price=300&max_price=500"
+          }
+        },
+        {
+          "name": "S-09 GET Books Combined Filters",
+          "request": {
+            "method": "GET",
+            "url": "{{BASE_URL}}/books?search_q=a&min_price=200&max_price=600&order_by=price&order=DESC&limit=3&offset=0"
+          }
+        },
+        {
+          "name": "S-10 GET Single Book by ID",
+          "request": {
+            "method": "GET",
+            "url": "{{BASE_URL}}/books/1"
+          }
+        },
+        {
+          "name": "S-11 POST Create Book (201 Created)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Pragmatic Programmer\",\n  \"author\": \"David Thomas\",\n  \"price\": 620,\n  \"pages\": 352\n}"
+            },
+            "url": "{{BASE_URL}}/books"
+          }
+        },
+        {
+          "name": "S-12 PUT Update Book (200 OK)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Pragmatic Programmer (20th Anniversary Edition)\",\n  \"author\": \"David Thomas & Andrew Hunt\",\n  \"price\": 680,\n  \"pages\": 360\n}"
+            },
+            "url": "{{BASE_URL}}/books/10"
+          }
+        },
+        {
+          "name": "S-13 DELETE Book by ID (200 OK)",
+          "request": {
+            "method": "DELETE",
+            "url": "{{BASE_URL}}/books/10"
+          }
+        },
+        {
+          "name": "S-14 GET Books Trailing Slash",
+          "request": {
+            "method": "GET",
+            "url": "{{BASE_URL}}/books/"
+          }
+        },
+        {
+          "name": "S-15 GET Books Search No Match (Empty List)",
+          "request": {
+            "method": "GET",
+            "url": "{{BASE_URL}}/books?search_q=NonExistentMatch12345"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Failure and Validation Cases",
+      "item": [
+        {
+          "name": "F-01 POST Missing Title (400)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"author\": \"Robert Martin\",\n  \"price\": 500,\n  \"pages\": 200\n}"
+            },
+            "url": "{{BASE_URL}}/books"
+          }
+        },
+        {
+          "name": "F-02 POST Missing Author (400)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Refactoring\",\n  \"price\": 500,\n  \"pages\": 200\n}"
+            },
+            "url": "{{BASE_URL}}/books"
+          }
+        },
+        {
+          "name": "F-03 POST Non-numeric Price (400)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Refactoring\",\n  \"author\": \"Martin Fowler\",\n  \"price\": \"five hundred\",\n  \"pages\": 200\n}"
+            },
+            "url": "{{BASE_URL}}/books"
+          }
+        },
+        {
+          "name": "F-04 POST Negative Price (400)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Refactoring\",\n  \"author\": \"Martin Fowler\",\n  \"price\": -50,\n  \"pages\": 200\n}"
+            },
+            "url": "{{BASE_URL}}/books"
+          }
+        },
+        {
+          "name": "F-05 POST Malformed JSON (400)",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"title\": \"Broken\", \"price\": }"
+            },
+            "url": "{{BASE_URL}}/books"
+          }
+        },
+        {
+          "name": "F-06 GET Invalid ID Format (400)",
+          "request": {
+            "method": "GET",
+            "url": "{{BASE_URL}}/books/abc"
+          }
+        },
+        {
+          "name": "F-07 GET Non-existent ID (404)",
+          "request": {
+            "method": "GET",
+            "url": "{{BASE_URL}}/books/999999"
+          }
+        },
+        {
+          "name": "F-08 PUT Non-existent ID (404)",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Valid Title\",\n  \"author\": \"Valid Author\",\n  \"price\": 300,\n  \"pages\": 100\n}"
+            },
+            "url": "{{BASE_URL}}/books/999999"
+          }
+        },
+        {
+          "name": "F-09 PUT Invalid Body Missing Author (400)",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Valid Title\",\n  \"price\": 300\n}"
+            },
+            "url": "{{BASE_URL}}/books/1"
+          }
+        },
+        {
+          "name": "F-10 DELETE Non-existent ID (404)",
+          "request": {
+            "method": "DELETE",
+            "url": "{{BASE_URL}}/books/999999"
+          }
+        },
+        {
+          "name": "F-11 DELETE Invalid ID Format (400)",
+          "request": {
+            "method": "DELETE",
+            "url": "{{BASE_URL}}/books/abc"
+          }
+        },
+        {
+          "name": "F-12 GET Invalid Order Direction (400)",
+          "request": {
+            "method": "GET",
+            "url": "{{BASE_URL}}/books?order=SIDEWAYS"
+          }
+        },
+        {
+          "name": "F-13 GET SQL Injection / Invalid Column (400)",
+          "request": {
+            "method": "GET",
+            "url": "{{BASE_URL}}/books?order_by=password;DROP%20TABLE%20books"
+          }
+        },
+        {
+          "name": "F-14 GET Invalid Limit (400)",
+          "request": {
+            "method": "GET",
+            "url": "{{BASE_URL}}/books?limit=abc"
+          }
+        },
+        {
+          "name": "F-15 GET Invalid Offset (400)",
+          "request": {
+            "method": "GET",
+            "url": "{{BASE_URL}}/books?offset=-1"
+          }
+        },
+        {
+          "name": "F-16 GET Non-numeric Min Price (400)",
+          "request": {
+            "method": "GET",
+            "url": "{{BASE_URL}}/books?min_price=abc"
+          }
+        },
+        {
+          "name": "F-17 GET Inverted Price Range (400)",
+          "request": {
+            "method": "GET",
+            "url": "{{BASE_URL}}/books?min_price=500&max_price=100"
+          }
+        },
+        {
+          "name": "F-18 GET Unknown Route (404)",
+          "request": {
+            "method": "GET",
+            "url": "{{BASE_URL}}/unknown-route"
+          }
+        },
+        {
+          "name": "F-19 GET SQL Injection in search_q (200 Neutralized)",
+          "request": {
+            "method": "GET",
+            "url": "{{BASE_URL}}/books?search_q=%27%20OR%20%271%27=%271"
+          }
+        }
+      ]
+    }
+  ]
+}
