@@ -1,7 +1,8 @@
 # Lab 3: REST API, query parameters, validation, debugging
 
 **Name:** PALLAPATI SUVIDHA · **Registration Number:** 252U1R7073 · **Section:** CSE FSD 2B  
-**GitHub Profile:** [PALLAPATI SUVIDHA](https://github.com/)  
+**GitHub Profile:** [PALLAPATI SUVIDHA (suvidhapallapati-ctrl)](https://github.com/suvidhapallapati-ctrl)  
+**GitHub Repository:** [suvidhapallapati-ctrl/suvidha](https://github.com/suvidhapallapati-ctrl/suvidha)  
 **Live link:** https://bdf-lab03-books-api.onrender.com *(Deployment Status: Local verification complete. Remote cloud deployment on Render/Railway is pending environment provisioning; comprehensive Postman test collection and response screenshots are provided below for every endpoint).*
 
 ---
